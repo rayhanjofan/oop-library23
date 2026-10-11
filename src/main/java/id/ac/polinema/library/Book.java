@@ -89,7 +89,7 @@ public class Book {
         //   }
         //   ____ = false;
         //   return true;
-        if (available) {
+        if (!available) {
             return false;
         }
         available = false;
