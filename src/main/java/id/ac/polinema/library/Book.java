@@ -22,6 +22,7 @@ public class Book {
     private String title;
     private int year;
     private boolean available;
+    private Author author;
 
     /**
      * Membuat buku baru yang masih tersedia (belum dipinjam).
@@ -66,6 +67,33 @@ public class Book {
         return title;
     }
 
+    /**
+     * Bagian 3. Mengubah judul. Judul null, kosong, atau hanya spasi ditolak
+     * dengan IllegalArgumentException, dan judul lama tetap.
+     */
+    public void setTitle(String title) {
+        // TODO Bantuan: periksa dulu, baru isi field. Class String punya method untuk
+        // memeriksa teks kosong atau hanya spasi. Jangan lupa kemungkinan null.
+        //
+        // Kerangka:
+        // if (title == null || ____) {
+        // throw new IllegalArgumentException("____");
+        // }
+        // this.title = title;
+        if (title == null || title.trim().isEmpty()) {
+            throw new IllegalArgumentException("Judul tidak boleh kosong atau hanya spasi");
+        }
+        this.title = title;
+    }
+
+    public Author getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(Author author) {
+        this.author = author;
+    }
+
     public int getYear() {
         // TODO Bantuan: sama seperti getIsbn.
         return year;
@@ -108,25 +136,6 @@ public class Book {
         // Kerangka:
         // ____ = true;
         available = true;
-    }
-
-    /**
-     * Bagian 3. Mengubah judul. Judul null, kosong, atau hanya spasi ditolak
-     * dengan IllegalArgumentException, dan judul lama tetap.
-     */
-    public void setTitle(String title) {
-        // TODO Bantuan: periksa dulu, baru isi field. Class String punya method untuk
-        // memeriksa teks kosong atau hanya spasi. Jangan lupa kemungkinan null.
-        //
-        // Kerangka:
-        // if (title == null || ____) {
-        // throw new IllegalArgumentException("____");
-        // }
-        // this.title = title;
-        if (title == null || title.trim().isEmpty()) {
-            throw new IllegalArgumentException("Judul tidak boleh kosong atau hanya spasi");
-        }
-        this.title = title;
     }
 
     /**
