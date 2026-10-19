@@ -28,10 +28,6 @@ public class Member {
     public Member(String memberId, String name) {
         // TODO Bantuan: validasi dulu sebelum mengisi field. Aturan nama sama dengan
         // setName.
-        if (memberId == null || memberId.isEmpty()) {
-            throw new IllegalArgumentException("Member ID cannot be null or empty");
-        }
-        this.memberId = memberId;
         // Bagian 4: kartu anggota juga dibuat di sini (lihat diagram Bagian 4).
         //
         // Kerangka:
@@ -40,6 +36,10 @@ public class Member {
         // }
         // this.memberId = memberId;
         // setName(____);
+        if (memberId == null || memberId.trim().isEmpty()) {
+            throw new IllegalArgumentException("Member ID cannot be null or empty");
+        }
+        this.memberId = memberId;
         setName(name);
         this.loanCount = 0;
     }
@@ -66,7 +66,7 @@ public class Member {
         // throw new IllegalArgumentException("____");
         // }
         // this.name = name;
-        if (name == null || name.isEmpty()) {
+        if (name == null || name.trim().isEmpty()) {
             throw new IllegalArgumentException("Name cannot be null or empty");
         }
         this.name = name;
