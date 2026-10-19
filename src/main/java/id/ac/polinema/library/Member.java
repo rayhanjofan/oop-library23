@@ -19,6 +19,7 @@ public class Member {
     private String memberId;
     private String name;
     private int loanCount;
+    private LibraryCard card;
 
     /**
      * Membuat anggota yang belum punya pinjaman.
@@ -42,6 +43,11 @@ public class Member {
         this.memberId = memberId;
         setName(name);
         this.loanCount = 0;
+        this.card = new LibraryCard("CARD-" + memberId);
+    }
+
+    public LibraryCard getCard() {
+        return card;
     }
 
     public String getMemberId() {
