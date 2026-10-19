@@ -28,6 +28,10 @@ package id.ac.polinema.library;
     public Member(String memberId, String name) {
         // TODO Bantuan: validasi dulu sebelum mengisi field. Aturan nama sama dengan
         // setName.
+        if (memberId == null || memberId.isEmpty()) {
+            throw new IllegalArgumentException("Member ID cannot be null or empty");
+        }
+        this.memberId = memberId;
         // Bagian 4: kartu anggota juga dibuat di sini (lihat diagram Bagian 4).
         //
         // Kerangka:
@@ -36,11 +40,8 @@ package id.ac.polinema.library;
         // }
         // this.memberId = memberId;
         // setName(____);
-        if (memberId == null || memberId.isEmpty()) {
-            throw new IllegalArgumentException("Member ID cannot be null or empty");
-        }
-        this.memberId = memberId;
         setName(name);
+        this.loanCount = 0;
     }
 
     public String getMemberId() {
