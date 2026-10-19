@@ -14,7 +14,7 @@ package id.ac.polinema.library;
  * private ____ name;
  * private int loanCount; // nilai awal 0
  */
-    public class Member {
+public class Member {
 
     private String memberId;
     private String name;
@@ -54,15 +54,18 @@ package id.ac.polinema.library;
         return name;
     }
 
-    /** Nama tidak boleh null atau kosong: lempar IllegalArgumentException dan biarkan nama lama. */
+    /**
+     * Nama tidak boleh null atau kosong: lempar IllegalArgumentException dan
+     * biarkan nama lama.
+     */
     public void setName(String name) {
         // TODO Bantuan: periksa dulu, baru isi field.
         //
         // Kerangka:
-        //   if (name == null || ____) {
-        //       throw new IllegalArgumentException("____");
-        //   }
-        //   this.name = name;
+        // if (name == null || ____) {
+        // throw new IllegalArgumentException("____");
+        // }
+        // this.name = name;
         if (name == null || name.isEmpty()) {
             throw new IllegalArgumentException("Name cannot be null or empty");
         }
