@@ -10,37 +10,44 @@ package id.ac.polinema.library;
  * Method untuk bagian berikutnya (setAuthor, getAuthor, dan seterusnya) kamu
  * tambahkan sendiri sesuai diagram di bagian tersebut.
  *
- * Kerangka field (lengkapi tipe dan nama dari diagram), letakkan di atas constructor:
- *   public String isbn;
- *   public ____ title;
- *   public ____ year;
- *   public ____ available;
+ * Kerangka field (lengkapi tipe dan nama dari diagram), letakkan di atas
+ * constructor:
+ * public String isbn;
+ * public ____ title;
+ * public ____ year;
+ * public ____ available;
  */
 public class Book {
     private String isbn;
     private String title;
     private int year;
     private boolean available;
+
     /**
      * Membuat buku baru yang masih tersedia (belum dipinjam).
-     * Bagian 3: isbn tidak boleh kosong; title dan year divalidasi seperti setter-nya.
+     * Bagian 3: isbn tidak boleh kosong; title dan year divalidasi seperti
+     * setter-nya.
      */
     public Book(String isbn, String title, int year) {
         // TODO Bantuan: isi semua field. Buku baru: apakah sedang dipinjam atau tidak?
-        // Bagian 3: aturan validasi judul dan tahun sama dengan setter. Bisakah constructor
+        // Bagian 3: aturan validasi judul dan tahun sama dengan setter. Bisakah
+        // constructor
         // memakai setter-nya?
         //
         // Kerangka (Bagian 2):
-        //   this.isbn = isbn;
-        //   this.title = ____;
-        //   this.year = ____;
-        //   this.available = ____;
+        // this.isbn = isbn;
+        // this.title = ____;
+        // this.year = ____;
+        // this.available = ____;
+        if (isbn == null || isbn.trim().isEmpty()) {
+            throw new IllegalArgumentException("ISBN tidak boleh kosong.");
+        }
         this.isbn = isbn;
         this.available = true;
-
-        // Kerangka (Bagian 3): ganti dua baris title dan year dengan pemanggilan setter.
-        //   setTitle(____);
-        //   setYear(____);
+        // Kerangka (Bagian 3): ganti dua baris title dan year dengan pemanggilan
+        // setter.
+        // setTitle(____);
+        // setYear(____);
         setTitle(title);
         setYear(year);
 
@@ -50,7 +57,7 @@ public class Book {
         // TODO Bantuan: kembalikan data yang disimpan constructor.
         //
         // Kerangka:
-        //   return ____;
+        // return ____;
         return isbn;
     }
 
@@ -69,7 +76,7 @@ public class Book {
         // TODO Bantuan: field apa yang menyimpan status pinjam?
         //
         // Kerangka:
-        //   return ____;
+        // return ____;
         return available;
     }
 
@@ -82,24 +89,24 @@ public class Book {
         // Method ini punya dua jalur return yang berbeda.
         //
         // Kerangka:
-        //   if (____) {
-        //       return false;
-        //   }
-        //   ____ = false;
-        //   return true;
+        // if (____) {
+        // return false;
+        // }
+        // ____ = false;
+        // return true;
         if (!available) {
             return false;
         }
         available = false;
         return true;
-        }
+    }
 
     /** Mengembalikan buku: buku bisa dipinjam lagi. */
     public void returnItem() {
         // TODO Bantuan: satu baris saja. Status apa yang berubah?
         //
         // Kerangka:
-        //   ____ = true;
+        // ____ = true;
         available = true;
     }
 
@@ -112,10 +119,10 @@ public class Book {
         // memeriksa teks kosong atau hanya spasi. Jangan lupa kemungkinan null.
         //
         // Kerangka:
-        //   if (title == null || ____) {
-        //       throw new IllegalArgumentException("____");
-        //   }
-        //   this.title = title;
+        // if (title == null || ____) {
+        // throw new IllegalArgumentException("____");
+        // }
+        // this.title = title;
         if (title == null || title.trim().isEmpty()) {
             throw new IllegalArgumentException("Judul tidak boleh kosong atau hanya spasi");
         }
@@ -130,12 +137,12 @@ public class Book {
         // TODO Bantuan: pola yang sama dengan setTitle. Apa syarat tahun yang valid?
         //
         // Kerangka:
-        //   if (year ____ 0) {
-        //       throw new IllegalArgumentException("____");
-        //   }
-        //   this.year = year;
+        // if (year ____ 0) {
+        // throw new IllegalArgumentException("____");
+        // }
+        // this.year = year;
         if (year <= 0) {
-            throw new IllegalArgumentException("Tahun terbit harus positif");
+            throw new IllegalArgumentException("Tahun terbit harus diatas 0");
         }
         this.year = year;
     }
