@@ -17,11 +17,8 @@ package id.ac.polinema.library;
  * public ____ year;
  * public ____ available;
  */
-public class Book {
+public class Book extends LibraryItem {
     private String isbn;
-    private String title;
-    private int year;
-    private boolean available;
     private Author author;
 
     /**
@@ -40,50 +37,17 @@ public class Book {
         // this.title = ____;
         // this.year = ____;
         // this.available = ____;
+        super(title, year);
+
         if (isbn == null || isbn.trim().isEmpty()) {
-            throw new IllegalArgumentException("ISBN tidak boleh kosong.");
+            throw new IllegalArgumentException( "ISBN cannot be null or empty");
         }
         this.isbn = isbn;
-        this.available = true;
-        // Kerangka (Bagian 3): ganti dua baris title dan year dengan pemanggilan
-        // setter.
-        // setTitle(____);
-        // setYear(____);
-        setTitle(title);
-        setYear(year);
-
+        this.author = null;
     }
 
     public String getIsbn() {
-        // TODO Bantuan: kembalikan data yang disimpan constructor.
-        //
-        // Kerangka:
-        // return ____;
         return isbn;
-    }
-
-    public String getTitle() {
-        // TODO Bantuan: sama seperti getIsbn.
-        return title;
-    }
-
-    /**
-     * Bagian 3. Mengubah judul. Judul null, kosong, atau hanya spasi ditolak
-     * dengan IllegalArgumentException, dan judul lama tetap.
-     */
-    public void setTitle(String title) {
-        // TODO Bantuan: periksa dulu, baru isi field. Class String punya method untuk
-        // memeriksa teks kosong atau hanya spasi. Jangan lupa kemungkinan null.
-        //
-        // Kerangka:
-        // if (title == null || ____) {
-        // throw new IllegalArgumentException("____");
-        // }
-        // this.title = title;
-        if (title == null || title.trim().isEmpty()) {
-            throw new IllegalArgumentException("Judul tidak boleh kosong atau hanya spasi");
-        }
-        this.title = title;
     }
 
     public Author getAuthor() {
@@ -92,67 +56,5 @@ public class Book {
 
     public void setAuthor(Author author) {
         this.author = author;
-    }
-
-    public int getYear() {
-        // TODO Bantuan: sama seperti getIsbn.
-        return year;
-    }
-
-    /** True jika buku sedang ada di perpustakaan (tidak dipinjam). */
-    public boolean isAvailable() {
-        // TODO Bantuan: field apa yang menyimpan status pinjam?
-        //
-        // Kerangka:
-        // return ____;
-        return available;
-    }
-
-    /**
-     * Meminjam buku. Berhasil (true) jika buku tersedia. Jika buku sedang
-     * dipinjam, hasilnya false dan keadaan buku tidak berubah.
-     */
-    public boolean checkOut() {
-        // TODO Bantuan: apa yang harus kamu periksa lebih dulu sebelum mengubah status?
-        // Method ini punya dua jalur return yang berbeda.
-        //
-        // Kerangka:
-        // if (____) {
-        // return false;
-        // }
-        // ____ = false;
-        // return true;
-        if (!available) {
-            return false;
-        }
-        available = false;
-        return true;
-    }
-
-    /** Mengembalikan buku: buku bisa dipinjam lagi. */
-    public void returnItem() {
-        // TODO Bantuan: satu baris saja. Status apa yang berubah?
-        //
-        // Kerangka:
-        // ____ = true;
-        available = true;
-    }
-
-    /**
-     * Bagian 3. Mengubah tahun terbit. Tahun 0 atau negatif ditolak dengan
-     * IllegalArgumentException, dan tahun lama tetap.
-     */
-    public void setYear(int year) {
-        // TODO Bantuan: pola yang sama dengan setTitle. Apa syarat tahun yang valid?
-        //
-        // Kerangka:
-        // if (year ____ 0) {
-        // throw new IllegalArgumentException("____");
-        // }
-        // this.year = year;
-        if (year <= 0) {
-            throw new IllegalArgumentException("Tahun terbit harus diatas 0");
-        }
-        this.year = year;
     }
 }
