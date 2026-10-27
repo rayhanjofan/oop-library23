@@ -1,15 +1,19 @@
+
 package id.ac.polinema.library;
 
 public class LibraryItem {
 
     protected String title;
     protected int year;
+
     private boolean available;
+    private int extensionDays;
 
     public LibraryItem(String title, int year) {
         setTitle(title);
         setYear(year);
         this.available = true;
+        this.extensionDays = 0;
     }
 
     public String getTitle() {
@@ -18,7 +22,9 @@ public class LibraryItem {
 
     public void setTitle(String title) {
         if (title == null || title.trim().isEmpty()) {
-            throw new IllegalArgumentException("Title cannot be null or empty");
+            throw new IllegalArgumentException(
+                "Title cannot be null or empty"
+            );
         }
 
         this.title = title;
@@ -30,7 +36,9 @@ public class LibraryItem {
 
     public void setYear(int year) {
         if (year <= 0) {
-            throw new IllegalArgumentException("Year must be greater than zero");
+            throw new IllegalArgumentException(
+                "Year must be greater than zero"
+            );
         }
 
         this.year = year;
@@ -51,5 +59,36 @@ public class LibraryItem {
 
     public void returnItem() {
         available = true;
+    }
+
+    public int loanDays() {
+        return 7;
+    }
+
+    public String describe() {
+        return title + " (" + year + ")";
+    }
+
+    @Override
+    public String toString() {
+        return describe();
+    }
+
+    public void extendLoan() {
+        extendLoan(7);
+    }
+
+    public void extendLoan(int days) {
+        if (days <= 0) {
+            throw new IllegalArgumentException(
+                "Extension days must be greater than zero"
+            );
+        }
+
+        extensionDays += days;
+    }
+
+    public int getTotalLoanDays() {
+        return loanDays() + extensionDays;
     }
 }

@@ -23,4 +23,15 @@ public class Dvd extends LibraryItem {
 
         this.durationMinutes = durationMinutes;
     }
+
+    @Override
+    public int loanDays() {
+        return 3;
+    }
+
+    @Override
+    public String describe() {
+        return super.describe()
+                + " [" + durationMinutes + " min]";
+    }
 }

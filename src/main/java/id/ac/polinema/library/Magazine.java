@@ -20,9 +20,7 @@ public class Magazine extends LibraryItem {
 
     public void setIssueNumber(int issueNumber) {
         if (issueNumber <= 0) {
-            throw new IllegalArgumentException(
-                "Issue number must be greater than zero"
-            );
+            throw new IllegalArgumentException("Issue number must be greater than zero");
         }
 
         this.issueNumber = issueNumber;
